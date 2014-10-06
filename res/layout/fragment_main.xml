@@ -14,5 +14,13 @@
         android:layout_height="wrap_content"
         android:text="@string/button_send"
         android:onClick="sendMessage"/>
+     <Button
+        android:id="@+id/commit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edit_message"
+        android:layout_marginTop="18dp"
+        android:onClick="btnCommitClick"
+        android:text="@string/commit" />
     
 </LinearLayout>
