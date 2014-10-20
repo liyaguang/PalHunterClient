@@ -3,24 +3,46 @@
     xmlns:tools="http://schemes.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
-    <EditText android:id="@+id/edit_message"
-        android:layout_width="0dp"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/edit_message"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1" 
         android:hint="@string/edit_message" />
-    <Button 
-        android:layout_width="wrap_content"
+
+    <EditText
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="@string/edit_content"
+        android:gravity="top"
+        android:maxLines="10" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button_send"
-        android:onClick="sendMessage"/>
-     <Button
-        android:id="@+id/commit_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/edit_message"
-        android:layout_marginTop="18dp"
-        android:onClick="btnCommitClick"
-        android:text="@string/commit" />
-    
+        android:orientation="horizontal"
+        style="?android:attr/buttonBarStyle" >
+
+        <Button
+            android:id="@+id/send_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:onClick="sendMessage"
+            android:text="@string/button_send" />
+
+        <Button
+            android:id="@+id/commit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/send_button"
+            android:layout_toEndOf="@id/send_button"
+            android:background="?android:attr/selectableItemBackground"
+            android:onClick="btnCommitClick"
+            android:text="@string/commit" />
+    </RelativeLayout>
+
 </LinearLayout>

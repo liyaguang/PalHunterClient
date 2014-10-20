@@ -4,10 +4,14 @@
     <string name="app_name">AndroidDemo</string>
     <string name="hello_world">Hello world!</string>
     <string name="edit_message">Enter a message</string>
+    <string name="edit_content">Please input the conent</string>
     <string name="button_send">Send</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_display_message">My Message</string>
     <string name="commit">Commit</string>
+    
+    <string name="tv_reminder">Reminder</string>
+    <string name="done">Done</string>
     
     <!-- Action bar menu -->
     <string name="action_search">Search</string>
