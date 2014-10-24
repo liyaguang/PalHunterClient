@@ -25,15 +25,15 @@ public class MainActivity extends Activity {
 		// setContentView(R.layout.activity_main);
 		setContentView(R.layout.fragment_main);
 		// Init button
-//		final Button btnCommit = (Button) findViewById(R.id.commit_button);
-//		btnCommit.setOnClickListener(new View.OnClickListener() {
-//			
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//				getCurrentLocation();
-//			}
-//		});
+		// final Button btnCommit = (Button) findViewById(R.id.commit_button);
+		// btnCommit.setOnClickListener(new View.OnClickListener() {
+		//
+		// @Override
+		// public void onClick(View v) {
+		// // TODO Auto-generated method stub
+		// getCurrentLocation();
+		// }
+		// });
 	}
 
 	@Override
@@ -65,10 +65,10 @@ public class MainActivity extends Activity {
 		boolean gpsEnabled = checkGPS();
 		Log.d(TAG, "GPS Enabled: " + gpsEnabled);
 	}
-	
+
 	public void btnCommitClick(View view) {
 		getCurrentLocation();
-		
+
 	}
 
 	private boolean checkGPS() {
@@ -78,37 +78,41 @@ public class MainActivity extends Activity {
 				.isProviderEnabled(LocationManager.GPS_PROVIDER);
 		return gpsEnabled;
 	}
+
 	private void getCurrentLocation() {
 		LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, new LocationListener() {
-			
-			@Override
-			public void onStatusChanged(String provider, int status, Bundle extras) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void onProviderEnabled(String provider) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void onProviderDisabled(String provider) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void onLocationChanged(Location location) {
-				// TODO Auto-generated method stub
-				EditText editText = (EditText) findViewById(R.id.edit_message);
-				String locText = String.format("Lat: %.6f, lng: %.6f", location.getLatitude(), location.getLongitude());
-				Log.d(TAG, locText);
-				editText.setText(locText);
-			}
-		});
+		locationManager.requestLocationUpdates(
+				LocationManager.NETWORK_PROVIDER, 0, 0, new LocationListener() {
+
+					@Override
+					public void onStatusChanged(String provider, int status,
+							Bundle extras) {
+						// TODO Auto-generated method stub
+
+					}
+
+					@Override
+					public void onProviderEnabled(String provider) {
+						// TODO Auto-generated method stub
+
+					}
+
+					@Override
+					public void onProviderDisabled(String provider) {
+						// TODO Auto-generated method stub
+
+					}
+
+					@Override
+					public void onLocationChanged(Location location) {
+						// TODO Auto-generated method stub
+						EditText editText = (EditText) findViewById(R.id.edit_message);
+						String locText = String.format("Lat: %.6f, lng: %.6f",
+								location.getLatitude(), location.getLongitude());
+						Log.d(TAG, locText);
+						editText.setText(locText);
+					}
+				});
 	}
 
 	@Override
@@ -145,4 +149,13 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 	}
 
+	public void btnOpenMapClick(View view) {
+		Intent intent = new Intent(this, MapActivity.class);
+		startActivity(intent);
+	}
+
+	public void btnLoginClick(View view) {
+		Intent intent = new Intent(this, LoginActivity.class);
+		startActivity(intent);
+	}
 }
