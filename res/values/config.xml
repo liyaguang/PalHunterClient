@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Server configuration -->
+   	<string name="server_ip">125.138.163.134</string>
+   	<string name="server_port">9002</string>
+</resources>
