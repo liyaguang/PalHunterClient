@@ -19,10 +19,15 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_map">My Trajectory</string>
     <string name="title_activity_login">Log in</string>
-    
-    <!-- Used for Key values -->
-   	<string name="main_activity_saved_message">main_activity_saved_message</string>
 
-   	
-   	
+    <!-- Used for Key values -->
+    <string name="main_activity_saved_message">main_activity_saved_message</string>
+    <string name="title_activity_user_info">UserInfoActivity</string>
+    
+    <!-- Text for button -->
+    <string name="show_user_info">Show Info</string>
+    <string name="show_user_location">Show User Location</string>
+    <string name="get_user_address">Get User Address</string>
+    <string name="update_location">Update Location</string>
+
 </resources>

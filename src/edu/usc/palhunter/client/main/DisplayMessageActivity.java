@@ -1,4 +1,6 @@
-package com.example.androiddemo;
+package edu.usc.palhunter.client.main;
+
+import com.example.androiddemo.R;
 
 import android.app.Activity;
 import android.content.Intent;

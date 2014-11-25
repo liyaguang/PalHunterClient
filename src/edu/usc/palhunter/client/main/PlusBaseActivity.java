@@ -1,4 +1,4 @@
-package com.example.androiddemo;
+package edu.usc.palhunter.client.main;
 
 import android.content.Intent;
 import android.content.IntentSender;

@@ -45,7 +45,7 @@
             android:text="@string/commit" />
 
         <Button
-            android:id="@+id/open_map_button"
+            android:id="@+id/btn_show_map_activity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/commit_button"
@@ -53,6 +53,15 @@
             android:background="?android:attr/selectableItemBackground"
             android:onClick="btnOpenMapClick"
             android:text="@string/open_map" />
+ 		<Button
+            android:id="@+id/btn_show_user_info_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/btn_show_map_activity"
+            android:layout_toRightOf="@id/btn_show_map_activity"
+            android:background="?android:attr/selectableItemBackground"
+            android:onClick="btnShowUserInfoClick"
+            android:text="@string/show_user_info" />
     </RelativeLayout>
 
     <Button

@@ -1,4 +1,4 @@
-package com.example.androiddemo;
+package edu.usc.palhunter.client.main;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.androiddemo.R;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
 import com.google.android.gms.maps.MapFragment;

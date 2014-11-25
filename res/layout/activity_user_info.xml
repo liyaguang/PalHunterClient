@@ -1,0 +1,58 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="edu.usc.palhunter.client.main.UserInfoActivity" >
+
+    <ProgressBar
+        android:id="@+id/address_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_show_user_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_world" />
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_show_user_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="showUserInfoClick"
+        android:text="@string/show_user_info" />
+
+    <Button
+        android:id="@+id/btn_show_user_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="showUserLocationClick"
+        android:text="@string/show_user_location" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_get_address"
+        android:onClick="getUserAddressClick"
+        android:text="@string/get_user_address" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_update_location"
+        android:onClick="updateLocationClick"
+        android:text="@string/update_location" />
+
+</LinearLayout>

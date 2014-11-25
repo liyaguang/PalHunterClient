@@ -3,4 +3,5 @@
     <!-- Server configuration -->
    	<string name="server_ip">125.138.163.134</string>
    	<string name="server_port">9002</string>
+   	<string name="server_addr">http://125.138.163.134:9002/PalHunterServer/</string>
 </resources>

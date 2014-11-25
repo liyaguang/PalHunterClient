@@ -1,4 +1,6 @@
-package com.example.androiddemo;
+package edu.usc.palhunter.client.main;
+
+import com.example.androiddemo.R;
 
 import android.app.Activity;
 import android.content.Context;
@@ -27,16 +29,6 @@ public class MainActivity extends Activity {
     // setContentView(R.layout.activity_main);
     setContentView(R.layout.fragment_main);
     init();
-    // Init button
-    // final Button btnCommit = (Button) findViewById(R.id.commit_button);
-    // btnCommit.setOnClickListener(new View.OnClickListener() {
-    //
-    // @Override
-    // public void onClick(View v) {
-    // // TODO Auto-generated method stub
-    // getCurrentLocation();
-    // }
-    // });
   }
 
   private void init() {
@@ -173,6 +165,10 @@ public class MainActivity extends Activity {
 
   public void btnLoginClick(View view) {
     Intent intent = new Intent(this, LoginActivity.class);
+    startActivity(intent);
+  }
+  public void btnShowUserInfoClick(View view) {
+    Intent intent = new Intent(this, UserInfoActivity.class);
     startActivity(intent);
   }
 }
