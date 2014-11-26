@@ -1,33 +1,29 @@
 package edu.usc.palhunter.client.main;
 
 import edu.usc.palhunter.R;
-import edu.usc.palhunter.R.id;
-import edu.usc.palhunter.R.layout;
-import edu.usc.palhunter.R.menu;
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class FacebookLoginActivity extends FragmentActivity {
+public class FBLoginActivity extends FragmentActivity {
 
-  private MainFragment mainFragment;
+  private FBLoginFragment mainFragment;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     if (savedInstanceState == null) {
       // Add the fragment on initial activity setup
-      mainFragment = new MainFragment();
+      mainFragment = new FBLoginFragment();
       getSupportFragmentManager().beginTransaction()
           .add(android.R.id.content, mainFragment).commit();
     } else {
       // restored state info
-      mainFragment = (MainFragment) getSupportFragmentManager().findFragmentById(
-          android.R.id.content);
+      mainFragment = (FBLoginFragment) getSupportFragmentManager()
+          .findFragmentById(android.R.id.content);
     }
-    setContentView(R.layout.activity_facebook_login);
+//    setContentView(R.layout.activity_facebook_login);
   }
 
   @Override

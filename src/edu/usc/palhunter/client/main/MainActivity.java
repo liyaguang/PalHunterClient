@@ -201,7 +201,7 @@ public class MainActivity extends Activity {
   }
 
   public void btnLoginClick(View view) {
-    Intent intent = new Intent(this, FacebookLoginActivity.class);
+    Intent intent = new Intent(this, FBLoginActivity.class);
     startActivity(intent);
   }
 

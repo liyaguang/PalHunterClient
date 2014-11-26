@@ -74,7 +74,7 @@
                 android:value="com.example.androiddemo.MainActivity" />
         </activity>
         <activity
-            android:name="edu.usc.palhunter.client.main.FacebookLoginActivity"
+            android:name="edu.usc.palhunter.client.main.FBLoginActivity"
             android:label="@string/title_activity_facebook_login"
             android:parentActivityName=".client.main.MainActivity" >
             <meta-data
