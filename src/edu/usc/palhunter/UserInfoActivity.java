@@ -1,4 +1,4 @@
-package edu.usc.palhunter.client.main;
+package edu.usc.palhunter;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -46,7 +46,7 @@ import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.location.LocationRequest;
 
 import edu.usc.palhunter.R;
-import edu.usc.palhunter.client.config.Config;
+import edu.usc.palhunter.config.Config;
 import edu.usc.util.Utility;
 
 public class UserInfoActivity extends Activity implements

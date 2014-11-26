@@ -1,4 +1,4 @@
-package edu.usc.palhunter.client.config;
+package edu.usc.palhunter.config;
 
 public class Config {
   static String ip = "128.125.163.134";

@@ -1,4 +1,4 @@
-package edu.usc.palhunter.client.main;
+package edu.usc.palhunter;
 
 import edu.usc.palhunter.R;
 import android.os.Bundle;

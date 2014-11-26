@@ -1,4 +1,4 @@
-package edu.usc.palhunter.client.main;
+package edu.usc.palhunter;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
