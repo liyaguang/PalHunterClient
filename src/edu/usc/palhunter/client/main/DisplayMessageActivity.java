@@ -1,6 +1,5 @@
 package edu.usc.palhunter.client.main;
 
-import com.example.androiddemo.R;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import edu.usc.palhunter.R;
 
 public class DisplayMessageActivity extends Activity {
 

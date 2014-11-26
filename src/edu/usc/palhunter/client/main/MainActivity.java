@@ -1,22 +1,31 @@
 package edu.usc.palhunter.client.main;
 
-import com.example.androiddemo.R;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.Signature;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.preference.Preference;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+
+import com.facebook.AppEventsLogger;
+
+import edu.usc.palhunter.R;
 
 public class MainActivity extends Activity {
 
@@ -28,14 +37,37 @@ public class MainActivity extends Activity {
     super.onCreate(savedInstanceState);
     // setContentView(R.layout.activity_main);
     setContentView(R.layout.fragment_main);
+    calcHash();
     init();
+  }
+
+  private void calcHash() {
+    // TODO Auto-generated method stub
+    PackageInfo info;
+    try {
+      info = getPackageManager().getPackageInfo(
+          "edu.usc.palhunter", PackageManager.GET_SIGNATURES);
+      for (Signature signature : info.signatures) {
+        MessageDigest md = MessageDigest.getInstance("SHA");
+        md.update(signature.toByteArray());
+        Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+      }
+    } catch (NameNotFoundException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    } catch (NoSuchAlgorithmException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
   }
 
   private void init() {
     // TODO Auto-generated method stub
     SharedPreferences pref = getPreferences(MODE_PRIVATE);
-    String savedMessage = pref.getString(getString(R.string.main_activity_saved_message), "");
-    // get editor 
+    String savedMessage = pref.getString(
+        getString(R.string.main_activity_saved_message), "");
+    // get editor
     EditText editText = (EditText) findViewById(R.id.edit_message);
     editText.setText(savedMessage);
   }
@@ -44,6 +76,9 @@ public class MainActivity extends Activity {
   protected void onPause() {
     // TODO Auto-generated method stub
     super.onPause();
+
+    // Logs 'app deactivate' App Event
+    AppEventsLogger.deactivateApp(this);
     Log.d(TAG, "App paused");
   }
 
@@ -58,6 +93,9 @@ public class MainActivity extends Activity {
   protected void onResume() {
     // TODO Auto-generated method stub
     super.onResume();
+
+    // Logs 'install' and 'app activate' App Events
+    AppEventsLogger.activateApp(this);
     Log.d(TAG, "App resumed");
   }
 
@@ -151,8 +189,7 @@ public class MainActivity extends Activity {
     // save message using shared preference
     SharedPreferences pref = getPreferences(MODE_PRIVATE);
     SharedPreferences.Editor editor = pref.edit();
-    editor.putString(getString(R.string.main_activity_saved_message),
-        message);
+    editor.putString(getString(R.string.main_activity_saved_message), message);
     editor.commit();
     intent.putExtra(EXTRA_MESSAGE, message);
     startActivity(intent);
@@ -164,9 +201,10 @@ public class MainActivity extends Activity {
   }
 
   public void btnLoginClick(View view) {
-    Intent intent = new Intent(this, LoginActivity.class);
+    Intent intent = new Intent(this, FacebookLoginActivity.class);
     startActivity(intent);
   }
+
   public void btnShowUserInfoClick(View view) {
     Intent intent = new Intent(this, UserInfoActivity.class);
     startActivity(intent);

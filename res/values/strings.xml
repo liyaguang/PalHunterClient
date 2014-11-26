@@ -14,6 +14,10 @@
     <string name="open_map">Open Map</string>
     <string name="login_button">Log in</string>
 
+    <!-- Facebook app id -->
+    <string name="facebook_app_id">603078449809460</string>
+    <string name="facebook_app_secret">85b3cdff4b8667a8c329bff744d7b4d2</string>
+
     <!-- Action bar menu -->
     <string name="action_search">Search</string>
     <string name="action_settings">Settings</string>
@@ -23,11 +27,12 @@
     <!-- Used for Key values -->
     <string name="main_activity_saved_message">main_activity_saved_message</string>
     <string name="title_activity_user_info">UserInfoActivity</string>
-    
+
     <!-- Text for button -->
     <string name="show_user_info">Show Info</string>
     <string name="show_user_location">Show User Location</string>
     <string name="get_user_address">Get User Address</string>
     <string name="update_location">Update Location</string>
+    <string name="title_activity_facebook_login">FacebookLoginActivity</string>
 
 </resources>
