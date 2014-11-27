@@ -47,7 +47,7 @@ import com.google.android.gms.location.LocationRequest;
 
 import edu.usc.palhunter.R;
 import edu.usc.palhunter.config.Config;
-import edu.usc.util.Utility;
+import edu.usc.palhunter.util.Utility;
 
 public class UserInfoActivity extends Activity implements
     GooglePlayServicesClient.ConnectionCallbacks,

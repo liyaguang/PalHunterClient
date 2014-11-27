@@ -1,4 +1,4 @@
-package edu.usc.util;
+package edu.usc.palhunter.util;
 
 import java.io.InputStream;
 import java.util.Scanner;

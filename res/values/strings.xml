@@ -34,5 +34,7 @@
     <string name="get_user_address">Get User Address</string>
     <string name="update_location">Update Location</string>
     <string name="title_activity_facebook_login">FacebookLoginActivity</string>
+    <string name="title_activity_gcmdemo">GCMDemoActivity</string>
+    <string name="gcm_test">GCM Test</string>
 
 </resources>

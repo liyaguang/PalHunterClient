@@ -70,5 +70,11 @@
         android:layout_height="wrap_content"
         android:onClick="btnLoginClick"
         android:text="@string/login_button" />
+    <Button
+        android:id="@+id/gmc_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="btnGCMTestCLick"
+        android:text="@string/gcm_test" />
 
 </LinearLayout>

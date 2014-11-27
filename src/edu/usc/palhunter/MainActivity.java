@@ -45,8 +45,8 @@ public class MainActivity extends Activity {
     // TODO Auto-generated method stub
     PackageInfo info;
     try {
-      info = getPackageManager().getPackageInfo(
-          "edu.usc.palhunter", PackageManager.GET_SIGNATURES);
+      info = getPackageManager().getPackageInfo("edu.usc.palhunter",
+          PackageManager.GET_SIGNATURES);
       for (Signature signature : info.signatures) {
         MessageDigest md = MessageDigest.getInstance("SHA");
         md.update(signature.toByteArray());
@@ -207,6 +207,10 @@ public class MainActivity extends Activity {
 
   public void btnShowUserInfoClick(View view) {
     Intent intent = new Intent(this, UserInfoActivity.class);
+    startActivity(intent);
+  }
+  public void btnGCMTestCLick(View view) {
+    Intent intent = new Intent(this, GCMDemoActivity.class);
     startActivity(intent);
   }
 }
