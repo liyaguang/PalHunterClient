@@ -3,8 +3,12 @@ package edu.usc.palhunter;
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -18,6 +22,9 @@ import android.widget.TextView;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
+
+import edu.usc.palhunter.data.LocalUserInfo;
+import edu.usc.palhunter.util.APIRequest;
 
 public class GCMDemoActivity extends Activity {
 
@@ -65,6 +72,14 @@ public class GCMDemoActivity extends Activity {
     } else {
       Log.i(TAG, "No valid Google Play Services APK found.");
     }
+    mDisplay.setText(getIntent().getStringExtra("message"));
+  }
+  @Override
+  protected void onNewIntent(Intent intent) {
+    // TODO Auto-generated method stub
+    super.onNewIntent(intent);
+    mDisplay = (TextView) findViewById(R.id.tvDisplay);
+//    mDisplay.setText(getIntent().getStringExtra("message"));
   }
 
   /**
@@ -194,6 +209,17 @@ public class GCMDemoActivity extends Activity {
    */
   private void sendRegistrationIdToBackend() {
     // Your implementation here.
+    String api = "SetRid";
+    int userId = LocalUserInfo.getUserId(this);
+    JSONObject params = new JSONObject();
+    try {
+      params.put("rid", regid);
+      params.put("userId", userId);
+      APIRequest.post(api, params, null);
+    } catch (JSONException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
   }
 
   /**

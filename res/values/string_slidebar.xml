@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Navi -->
+    <string name="str_navi_home">Home</string>
+    <string name="str_navi_work_notes">Friends</string>
+    <string name="str_navi_third_libs">Trips</string>
+    <!-- Left slide menu -->
+    <string name="str_left_menu_name">Yaguang</string>
+    <string name="str_empty_btn">\n</string>
+    <string name="str_loading_wait">Loading...</string>
+
+    <!-- viewpager navigate -->
+    <string name="title_bottom_navigate_menu">Fragment+ViewPager</string>
+    <string name="str_btm_navi_name_hp">HomePage</string>
+    <string name="str_btm_navi_name_lv">List</string>
+    <string name="str_btm_navi_name_vp">ViewPager</string>
+    <string name="str_btm_navi_hp_info"> Bottom Navigation  </string>
+
+    <!-- menu about -->
+    <string name="str_auth_mail">liyaguang0123@gmail.com</string>
+    <string name="str_hompage">Home page</string>
+    <string name="str_other_app">Other app</string>
+    <string name="str_recmd">Recommend</string>
+    <string name="str_menu1">Menu1</string>
+    <string name="str_menu2">Menu2</string>
+    <string name="str_mailto">Email</string>
+
+    <!-- wps exit dialog -->
+    <string name="str_dialog_exit_msg">Do you want to exit ?</string>
+    <string name="str_wps_exit">Exit</string>
+    <string name="str_wps_more">More</string>
+    <string name="str_wps_cancel">Cancel</string>
+
+</resources>

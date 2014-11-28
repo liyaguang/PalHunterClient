@@ -1,0 +1,45 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_view_bkg" >
+
+    <RadioGroup
+        android:id="@+id/navi_switcher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:checkedButton="@+id/navi_switcher_item_hp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/navi_switcher_item_hp"
+            style="@style/radio_btn_style"
+            android:text="@string/str_btm_navi_name_hp" />
+
+        <RadioButton
+            android:id="@+id/navi_switcher_item_lv"
+            style="@style/radio_btn_style"
+            android:text="@string/str_btm_navi_name_lv" />
+
+        <RadioButton
+            android:id="@+id/navi_switcher_item_vp"
+            style="@style/radio_btn_style"
+            android:text="@string/str_btm_navi_name_vp" />
+    </RadioGroup>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/navi_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/navi_switcher"
+        android:layout_alignParentTop="true"
+        android:padding="0dip" />
+
+<!--     <TextView -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:text="@string/hello_world" /> -->
+
+</RelativeLayout>

@@ -17,4 +17,64 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
+    <style name="radio_btn_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">15dip</item>
+        <item name="android:paddingBottom">15dip</item>
+        <item name="android:button">@null</item>
+        <item name="android:background">@drawable/btm_navi_item_bkg</item>
+        <item name="android:textColor">@color/color_btm_navi_txt</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:duplicateParentState">true</item>
+    </style>
+
+    <style name="main_navi_img_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginTop">4dip</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:duplicateParentState">true</item>
+    </style>
+
+    <style name="main_navi_txt_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">2dip</item>
+        <item name="android:layout_marginBottom">4dip</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:duplicateParentState">true</item>
+        <item name="android:textColor">@color/color_main_navi_txt</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="left_menu_oper_item_txt">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/custom_left_menu_item_height</item>
+        <item name="android:background">@null</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#d0d1d3</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:drawablePadding">8dip</item>
+    </style>
+
+    <style name="left_menu_item_txt">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/custom_left_menu_item_height</item>
+        <item name="android:background">@null</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#d0d1d3</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:drawablePadding">8dip</item>
+        <item name="android:layout_marginLeft">@dimen/custom_left_menu_margin</item>
+    </style>
+
 </resources>

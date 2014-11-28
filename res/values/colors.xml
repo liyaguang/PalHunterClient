@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="color_translucence">#a07789ae</color>
+	<color name="color_translucencer">#307789ae</color>
+	<color name="color_transparent">#00000000</color>
+	<color name="color_white">#ffffffff</color>
+	
+	<color name="color_title_bkg">#55c1c1</color>
+	<!-- view background -->
+	<color name="color_view_bkg">#fff5f5f5</color>
+	
+	<!--bottom navigate item text color -->
+	<color name="color_btm_navi_txt_normal">#ffb1c3e7</color>
+	<color name="color_btm_navi_txt_pressed">@color/color_white</color>
+	<color name="color_btm_navi_txt_checked">@color/color_white</color>
+	
+	<color name="color_list_item_bk_pressed">#ffeeeeee</color>
+	<color name="color_list_item_bk_selected">#ffeeeeee</color>
+	<color name="color_list_item_bk_disable">@color/color_white</color>
+	<color name="color_list_item_bk_normal">@color/color_white</color>
+	
+	<color name="color_txt_gray">#ff666666</color>
+	<color name="color_txt_disable">#ff86d1ff</color>
+	<color name="color_txt_light_gray">#ff999999</color>
+	<color name="color_txt_dark_gray">#ff333333</color>
+	
+	<!-- double list fragment list sample -->
+	<color name="color_list_double_list_select_bkg">#ffebebeb</color>
+	
+
+	<!-- top button color -->
+	<color name="color_top_btn_start">#ff7a9da9</color>
+	<color name="color_top_btn_end">#ff566592</color>
+	<color name="color_top_btn_stroke">#ff506088</color>
+</resources>

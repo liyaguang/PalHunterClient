@@ -1,6 +1,7 @@
 package edu.usc.palhunter;
 
 import android.app.IntentService;
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -44,17 +45,18 @@ public class GcmIntentService extends IntentService {
         // If it's a regular GCM message, do some work.
       } else if (GoogleCloudMessaging.MESSAGE_TYPE_MESSAGE.equals(messageType)) {
         // This loop represents the service doing some work.
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 2; i++) {
           Log.i(TAG,
               "Working... " + (i + 1) + "/5 @ " + SystemClock.elapsedRealtime());
           try {
-            Thread.sleep(5000);
+            Thread.sleep(1000);
           } catch (InterruptedException e) {
           }
         }
         Log.i(TAG, "Completed work @ " + SystemClock.elapsedRealtime());
         // Post notification of received message.
-        sendNotification("Received: " + extras.toString());
+        String content = extras.getString("content");
+        sendNotification("Received: " + content);
         Log.i(TAG, "Received: " + extras.toString());
       }
     }
@@ -62,24 +64,32 @@ public class GcmIntentService extends IntentService {
     GcmBroadcastReceiver.completeWakefulIntent(intent);
   }
 
-  // Put the message into a notification and post it.
-  // This is just one simple example of what you might choose to do with
-  // a GCM message.
+  /**
+   * Put the message into a notification and post it. This is just one simple
+   * example of what you might choose to do with a GCM message.
+   */
   private void sendNotification(String msg) {
     mNotificationManager = (NotificationManager) this
         .getSystemService(Context.NOTIFICATION_SERVICE);
 
+    Intent resultIntent = new Intent(this, GCMDemoActivity.class);
+    resultIntent.putExtra("message", msg);
+    resultIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+        Intent.FLAG_ACTIVITY_SINGLE_TOP);
     PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
-        new Intent(this, GCMDemoActivity.class), 0);
+        resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
     NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
-//        .setSmallIcon(R.drawable.ic_stat_gcm)
-        .setContentTitle("GCM Notification")
+        .setSmallIcon(R.drawable.ic_stat_gcm)
+        .setContentTitle("Palhunter Message")
         .setStyle(new NotificationCompat.BigTextStyle().bigText(msg))
         .setContentText(msg);
 
     mBuilder.setContentIntent(contentIntent);
-    mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
+
+    Notification notification = mBuilder.build();
+    notification.flags |= Notification.FLAG_AUTO_CANCEL;
+    mNotificationManager.notify(NOTIFICATION_ID, notification);
   }
 
 }

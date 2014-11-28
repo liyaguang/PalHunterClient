@@ -53,7 +53,8 @@
             android:background="?android:attr/selectableItemBackground"
             android:onClick="btnOpenMapClick"
             android:text="@string/open_map" />
- 		<Button
+
+        <Button
             android:id="@+id/btn_show_user_info_activity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -64,17 +65,30 @@
             android:text="@string/show_user_info" />
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/login_button"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:onClick="btnLoginClick"
-        android:text="@string/login_button" />
-    <Button
-        android:id="@+id/gmc_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="btnGCMTestCLick"
-        android:text="@string/gcm_test" />
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="btnLoginClick"
+            android:text="@string/login_button" />
+
+        <Button
+            android:id="@+id/gmc_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="btnGCMTestClick"
+            android:text="@string/gcm_test" />
+        <Button
+            android:id="@+id/bottom_nav_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="btnBottomNavClick"
+            android:text="@string/bottom_nav_test" />
+    </LinearLayout>
 
 </LinearLayout>

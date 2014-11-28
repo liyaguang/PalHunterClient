@@ -25,7 +25,9 @@ import android.widget.EditText;
 
 import com.facebook.AppEventsLogger;
 
-import edu.usc.palhunter.R;
+import edu.usc.palhunter.data.LocalUserInfo;
+import edu.usc.palhunter.ui.navi.BottomNavigateActivity;
+import edu.usc.palhunter.ui.sidebar.SideBarActivity;
 
 public class MainActivity extends Activity {
 
@@ -36,13 +38,12 @@ public class MainActivity extends Activity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     // setContentView(R.layout.activity_main);
-    setContentView(R.layout.fragment_main);
+    setContentView(R.layout.activity_main);
     calcHash();
     init();
   }
 
   private void calcHash() {
-    // TODO Auto-generated method stub
     PackageInfo info;
     try {
       info = getPackageManager().getPackageInfo("edu.usc.palhunter",
@@ -53,28 +54,30 @@ public class MainActivity extends Activity {
         Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
       }
     } catch (NameNotFoundException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     } catch (NoSuchAlgorithmException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
 
   }
 
   private void init() {
-    // TODO Auto-generated method stub
     SharedPreferences pref = getPreferences(MODE_PRIVATE);
     String savedMessage = pref.getString(
         getString(R.string.main_activity_saved_message), "");
     // get editor
     EditText editText = (EditText) findViewById(R.id.edit_message);
     editText.setText(savedMessage);
+    setUserId();
+  }
+
+  private void setUserId() {
+    // FIXME
+    LocalUserInfo.setUserId(this, 1);
   }
 
   @Override
   protected void onPause() {
-    // TODO Auto-generated method stub
     super.onPause();
 
     // Logs 'app deactivate' App Event
@@ -84,14 +87,12 @@ public class MainActivity extends Activity {
 
   @Override
   protected void onStop() {
-    // TODO Auto-generated method stub
     super.onStop();
     Log.d(TAG, "App stoped");
   }
 
   @Override
   protected void onResume() {
-    // TODO Auto-generated method stub
     super.onResume();
 
     // Logs 'install' and 'app activate' App Events
@@ -101,7 +102,6 @@ public class MainActivity extends Activity {
 
   @Override
   protected void onStart() {
-    // TODO Auto-generated method stub
     super.onStart();
     Log.d(TAG, "App Started");
     boolean gpsEnabled = checkGPS();
@@ -128,25 +128,21 @@ public class MainActivity extends Activity {
 
           @Override
           public void onStatusChanged(String provider, int status, Bundle extras) {
-            // TODO Auto-generated method stub
 
           }
 
           @Override
           public void onProviderEnabled(String provider) {
-            // TODO Auto-generated method stub
 
           }
 
           @Override
           public void onProviderDisabled(String provider) {
-            // TODO Auto-generated method stub
 
           }
 
           @Override
           public void onLocationChanged(Location location) {
-            // TODO Auto-generated method stub
             EditText editText = (EditText) findViewById(R.id.edit_message);
             String locText = String.format("Lat: %.6f, lng: %.6f",
                 location.getLatitude(), location.getLongitude());
@@ -209,8 +205,19 @@ public class MainActivity extends Activity {
     Intent intent = new Intent(this, UserInfoActivity.class);
     startActivity(intent);
   }
-  public void btnGCMTestCLick(View view) {
+
+  public void btnGCMTestClick(View view) {
     Intent intent = new Intent(this, GCMDemoActivity.class);
+    startActivity(intent);
+  }
+
+  public void btnBottomNavClick(View view) {
+    Intent intent = new Intent(this, BottomNavigateActivity.class);
+    startActivity(intent);
+  }
+
+  public void btnSideBarClick(View view) {
+    Intent intent = new Intent(this, SideBarActivity.class);
     startActivity(intent);
   }
 }

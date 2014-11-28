@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <!-- 导航栏 -->
+	<LinearLayout
+	    android:baselineAligned="false"
+	    android:id="@+id/main_navigate"
+	    android:layout_alignParentBottom="true"
+	    android:background="#f9f9f9"
+	    android:layout_width="match_parent"
+	    android:layout_height="@dimen/custom_navi_height"
+	    android:orientation="horizontal" >
+	    <RelativeLayout
+	        android:id="@+id/navi_item_home"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:clickable="true" >
+	        <TextView
+	            android:id="@+id/navi_item_home_name"
+	            android:text="@string/str_navi_home"
+	            style="@style/main_navi_txt_style" />
+	        <ImageView
+	            android:layout_above="@id/navi_item_home_name"
+	            android:src="@drawable/main_navi_icon_home"
+	            android:contentDescription="@null"
+	            style="@style/main_navi_img_style" />
+	    </RelativeLayout>
+	    <RelativeLayout
+	        android:id="@+id/navi_item_work_notes"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:clickable="true" >
+	        <TextView
+	            android:id="@+id/navi_item_work_notes_name"
+	            android:text="@string/str_navi_work_notes"
+	            style="@style/main_navi_txt_style" />
+	        <ImageView
+	            android:layout_above="@id/navi_item_work_notes_name"
+	            android:src="@drawable/main_navi_icon_work_notes"
+	            android:contentDescription="@null"
+	            style="@style/main_navi_img_style" />
+	    </RelativeLayout>
+	    <RelativeLayout
+	        android:id="@+id/navi_item_third_libs"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:clickable="true" >
+	        <TextView
+	            android:id="@+id/navi_item_third_libs_name"
+	            android:text="@string/str_navi_third_libs"
+	            style="@style/main_navi_txt_style" />
+	        <ImageView
+	            android:layout_above="@id/navi_item_third_libs_name"
+	            android:src="@drawable/main_navi_icon_third_libs"
+	            android:contentDescription="@null"
+	            style="@style/main_navi_img_style" />
+	    </RelativeLayout>
+	</LinearLayout>
+	<!-- 分割线 -->
+	<View
+	    android:id="@+id/navigate_top_line"
+	    android:layout_above="@id/main_navigate"
+	    android:layout_width="match_parent"
+	    android:layout_height="1dip"
+	    android:background="#DADADA"/>
+	
+    <!-- 内容 -->
+	<FrameLayout
+	    android:id="@+id/content_frame"
+	    android:layout_above="@id/navigate_top_line"
+	    android:layout_alignParentTop="true"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent" />
+</RelativeLayout>

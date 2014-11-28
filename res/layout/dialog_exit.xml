@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:orientation="vertical"
+    android:background="@drawable/xdialog_exit_bkg" >
+    
+    <TextView
+        android:id="@+id/exit_dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="8dp"
+        android:textSize="20sp"
+        android:textColor="#ff004ad1"
+        android:text="@string/str_dialog_exit_msg" />
+        
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2dip"
+        android:layout_marginTop="3dip"
+        android:layout_marginBottom="3dip"
+        android:background="#ff8dadc7" />
+    
+    <LinearLayout
+        android:id="@+id/exit_dialog_pop_adview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+	    <TextView
+	        android:layout_width="match_parent"
+	        android:layout_height="2dip"
+	        android:layout_marginTop="3dip"
+	        android:layout_marginBottom="3dip"
+	        android:background="#ff8dadc7" />
+    </LinearLayout>
+    
+	<LinearLayout
+	    android:id="@+id/bookmarks_lowerbar"
+	    android:layout_width="match_parent"
+	    android:layout_height="50dip"
+	    android:baselineAligned="false" >
+		<Button
+		    android:layout_weight="1"
+		    android:layout_margin="5dip"
+			android:id="@+id/exit_dialog_btn_exit"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="@drawable/xbtn_top"
+			android:textColor="@color/color_white"
+			android:textSize="18sp"
+			android:text="@string/str_wps_exit"/>
+		<Button
+		    android:layout_weight="1"
+		    android:layout_margin="5dip"
+			android:id="@+id/exit_dialog_btn_cancel"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="@drawable/xbtn_top"
+			android:textColor="@color/color_white"
+			android:textSize="18sp"
+			android:text="@string/str_wps_cancel"/>
+		<Button
+		    android:layout_weight="1"
+		    android:layout_margin="5dip"
+			android:id="@+id/exit_dialog_btn_more"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="@drawable/xbtn_top"
+			android:textColor="@color/color_white"
+			android:textSize="18sp"
+			android:textStyle="bold"
+			android:text="@string/str_wps_more"/>
+	</LinearLayout>
+	
+</LinearLayout>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.usc.palhunter"
-    android:versionCode="1"
+    android:versionCode="3"
     android:versionName="1.0" >
 
     <uses-sdk
@@ -124,6 +124,22 @@
         <activity
             android:name=".GCMDemoActivity"
             android:label="@string/title_activity_gcmdemo"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.usc.palhunter.MainActivity" />
+        </activity>
+        <activity
+            android:name="edu.usc.palhunter.ui.navi.BottomNavigateActivity"
+            android:label="@string/title_activity_bottom_navigate"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.usc.palhunter.MainActivity" />
+        </activity>
+        <activity
+            android:name="edu.usc.palhunter.ui.sidebar.SideBarActivity"
+            android:label="@string/title_activity_sidebar"
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

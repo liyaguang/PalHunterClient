@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@null" >
+    <!-- Bottom options -->
+    <LinearLayout
+        android:id="@+id/left_menu_bottom_opers"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="horizontal" >
+	    <RelativeLayout
+	        android:id="@+id/left_menu_get_source"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:clickable="true"
+	        android:background="@drawable/left_menu_item_bkg" >
+	        <TextView
+	            style="@style/left_menu_oper_item_txt"
+	            android:layout_centerInParent="true"
+	            android:drawableLeft="@drawable/main_navi_def_normal"
+	            android:text="@string/str_menu1" />		        
+	    </RelativeLayout>
+	    <View
+	        android:layout_width="1px"
+	        android:layout_height="match_parent"
+	        android:layout_marginTop="8dip"
+	        android:layout_marginBottom="8dip"
+	        android:background="#32373b" />
+	    <RelativeLayout
+	        android:id="@+id/left_menu_recommend"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:clickable="true"
+	        android:background="@drawable/left_menu_item_bkg" >
+	        <TextView
+	            style="@style/left_menu_oper_item_txt"
+	            android:layout_centerInParent="true"
+	            android:drawableLeft="@drawable/main_navi_def_normal"
+	            android:text="@string/str_menu2" />		        
+	    </RelativeLayout>
+    </LinearLayout>
+    <!-- User Info -->
+    <LinearLayout
+        android:id="@+id/left_menu_perinfo"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="26dp"
+        android:layout_marginBottom="28dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" >
+	    <edu.usc.palhunter.widget.RoundedImageView
+	        xmlns:app="http://schemas.android.com/apk/res-auto"
+	        android:id="@+id/left_menu_avatar"
+	        android:layout_width="66dip"
+	        android:layout_height="66dip"
+	        android:duplicateParentState="true"
+	        android:src="@drawable/avatar"
+	        android:scaleType="fitXY"
+	        app:corner_radius="33dip"
+	        app:border_width="0dip"
+	        app:round_background="true"/>
+        <TextView
+            android:id="@+id/left_menu_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="8dip"
+            android:text="@string/str_left_menu_name"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- 中部操作项 -->
+    <ScrollView
+        android:layout_above="@id/left_menu_bottom_opers"
+        android:layout_below="@id/left_menu_perinfo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+	        <View
+	            android:layout_width="match_parent"
+	            android:layout_height="1px"
+	            android:layout_marginLeft="@dimen/custom_left_menu_margin"
+	            android:background="#34393d" />
+            <!-- 考虑扩展，用了相对布局。比如：右侧要加一个键头表示可点击 -->
+		    <RelativeLayout
+		        android:id="@+id/left_menu_blog"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:clickable="true"
+		        android:background="@drawable/left_menu_item_bkg" >
+		        <TextView
+		            style="@style/left_menu_item_txt"
+		            android:drawableLeft="@drawable/main_navi_def_normal"
+		            android:text="@string/str_menu1" />		        
+		    </RelativeLayout>
+            
+		    <RelativeLayout
+		        android:id="@+id/left_menu_mailto"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:clickable="true"
+		        android:background="@drawable/left_menu_item_bkg" >
+		        <TextView
+		            style="@style/left_menu_item_txt"
+		            android:drawableLeft="@drawable/main_navi_def_normal"
+		            android:text="@string/str_menu2" />		        
+		    </RelativeLayout>
+		    
+	        <View
+	            android:layout_width="match_parent"
+	            android:layout_height="1px"
+	            android:layout_marginLeft="@dimen/custom_left_menu_margin"
+	            android:background="#34393d" />
+	        
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
