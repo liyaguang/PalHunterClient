@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import cn.waps.AppConnect;
 import edu.usc.palhunter.R;
 
 public class LeftMenuFragment extends Fragment implements OnClickListener {
@@ -29,8 +28,7 @@ public class LeftMenuFragment extends Fragment implements OnClickListener {
   private void getAndSetViews(View view) {
     view.findViewById(R.id.left_menu_get_source).setOnClickListener(this);
     view.findViewById(R.id.left_menu_recommend).setOnClickListener(this);
-    view.findViewById(R.id.left_menu_blog).setOnClickListener(this);
-    // view.findViewById(R.id.btn_ma_other_app).setOnClickListener(this);
+    view.findViewById(R.id.left_menu_register).setOnClickListener(this);
     view.findViewById(R.id.left_menu_mailto).setOnClickListener(this);
   }
 
@@ -48,16 +46,10 @@ public class LeftMenuFragment extends Fragment implements OnClickListener {
           .getString(R.string.str_auth_mail) });
       startActivity(Intent.createChooser(emailIntent, null));
       break;
-    case R.id.left_menu_blog:
+    case R.id.left_menu_register:
       Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(getResources()
           .getString(R.string.str_hompage)));
       startActivity(intent);
-      break;
-    // case R.id.btn_ma_other_app:
-    // AppConnect.getInstance(getActivity()).showMore(getActivity());
-    // break;
-    case R.id.left_menu_recommend:
-      AppConnect.getInstance(getActivity()).showOffers(getActivity());
       break;
     }
   }
