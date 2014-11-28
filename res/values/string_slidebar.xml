@@ -3,8 +3,8 @@
 
     <!-- Navi -->
     <string name="str_navi_home">Home</string>
-    <string name="str_navi_work_notes">Friends</string>
-    <string name="str_navi_third_libs">Trips</string>
+    <string name="str_navi_friends">Friends</string>
+    <string name="str_navi_trips">Trips</string>
     <!-- Left slide menu -->
     <string name="str_left_menu_name">Yaguang</string>
     <string name="str_empty_btn">\n</string>

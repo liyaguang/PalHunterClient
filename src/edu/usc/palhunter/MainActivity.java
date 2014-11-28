@@ -55,23 +55,22 @@ public class MainActivity extends SlidingFragmentActivity implements
   private void setContentViews() {
     FragmentManager fm = getSupportFragmentManager();
     SlidingMenu sm = getSlidingMenu();
-    // 背景
+    // Background
     sm.setBackgroundColor(Color.rgb(37, 37, 37));
-    // 阴影
+    // Shadow
     sm.setShadowWidthRes(R.dimen.shadow_width);
     sm.setShadowDrawable(R.drawable.slide_menu_shadow);
-    // 偏移
+    // Offset
     DisplayMetrics metrics = new DisplayMetrics();
     getWindowManager().getDefaultDisplay().getMetrics(metrics);
     if (metrics.widthPixels > 0) {
-      // 资源配置，在不同分辨率，总会有出现别扭的机型，
-      // 可以通过屏幕实际宽度，按比例配置偏移，比如：黄金比例
+      // set offset with certain ratio
       sm.setBehindOffset((int) (metrics.widthPixels * 0.382));
     } else {
-      // 通过资源配置偏移
+      // set offset according to resource file
       sm.setBehindOffsetRes(R.dimen.slidingmenu_offset);
     }
-    // 设置侧滑栏动画
+    // set the sliding animation
     sm.setBehindCanvasTransformer((new CustomAnimation())
         .getCustomZoomAnimation());
 
@@ -79,16 +78,16 @@ public class MainActivity extends SlidingFragmentActivity implements
     sm.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
     sm.setMode(SlidingMenu.LEFT);
 
-    // 添加导航内容
+    // Add navigation content
     setContentView(R.layout.slide_menu_content_frame);
     navigateMap.clear();
-    mapNaviToFragment(R.id.navi_item_home, new HomeFragment()); // 首页
-    mapNaviToFragment(R.id.navi_item_work_notes, new FriendsFragment()); // 工作笔记
-    mapNaviToFragment(R.id.navi_item_third_libs, new TripsFragment()); // 第三方
-    // 设置首页默认显示
+    mapNaviToFragment(R.id.navi_item_home, new HomeFragment()); // Home
+    mapNaviToFragment(R.id.navi_item_friends, new FriendsFragment()); // Friends
+    mapNaviToFragment(R.id.navi_item_trips, new TripsFragment()); // Trips
+    // Set the default view
     replaceFragment(fm, R.id.navi_item_home);
 
-    // 设置左侧滑栏内容
+    // Set the content of left slide menu
     LeftMenuFragment lmf = new LeftMenuFragment();
     setBehindContentView(R.layout.slide_menu_frame);
     fm.beginTransaction().replace(R.id.menu_frame, lmf).commit();
@@ -102,10 +101,10 @@ public class MainActivity extends SlidingFragmentActivity implements
   }
 
   /**
-   * 初始化map
+   * init Fragement id map
    * 
    * @param id
-   *          导航view ID
+   *          Page view ID
    * @param fragment
    */
   private void mapNaviToFragment(int id, Fragment fragment) {
@@ -117,11 +116,11 @@ public class MainActivity extends SlidingFragmentActivity implements
   }
 
   /**
-   * 执行内容切换
+   * Replace the content of fragments 
    * 
    * @param fm
    * @param id
-   *          导航view ID
+   *          view ID
    */
   private void replaceFragment(FragmentManager fm, int id) {
     Utils
@@ -132,12 +131,12 @@ public class MainActivity extends SlidingFragmentActivity implements
                 + (null == fm.getFragments() ? "0[null]" : fm.getFragments()
                     .size()));
     String tag = String.valueOf(id);
-    // 执行替换
+    // Do replacement
     FragmentTransaction trans = fm.beginTransaction();
     if (null == fm.findFragmentByTag(tag)) {
       trans.replace(R.id.content_frame, navigateMap.get(id), tag);
-      // 不存在时，添加到stack，避免切换时，先前的被清除{fm.getFragments()}
-      // {存在时，不添加，避免BackStackEntry不断累加}
+      // if not exist, add to stack{fm.getFragments()}
+      // if exist, do not add to avoid BackStackEntry increase
       Utils.logh(TAG, "null +++ add to back");
       trans.addToBackStack(tag);
     } else {
@@ -146,7 +145,7 @@ public class MainActivity extends SlidingFragmentActivity implements
     trans.commit();
     Utils.logh(TAG, "replace map: " + navigateMap.get(id) + "\n"
         + "---- fm tag: " + fm.findFragmentByTag(tag));
-    // 重置导航选中状态
+    // Reset focus of navigation bar
     for (int i = 0, size = navigateMap.size(); i < size; i++) {
       int curId = navigateMap.keyAt(i);
       Utils.logh(TAG, "curId: " + curId);
@@ -167,22 +166,21 @@ public class MainActivity extends SlidingFragmentActivity implements
   }
 
   /**
-   * 点击后，切换内容
+   * Switch content after click
    * 
    * @param view
-   *          点击view
-   * @return 点击view，是否为导航view
+   * @return if the view if current view 
    */
   private boolean clickSwitchContent(View view) {
     int id = view.getId();
     if (navigateMap.indexOfKey(id) < 0) {
-      // 点击非导航view
+      // not the navigation view, do not have to switch
       return false;
     }
     Utils.logh(TAG, "switchContent " + id + " select: " + view.isSelected()
         + " view: " + view);
     if (!view.isSelected()) {
-      // 当前非选中状态：需切换到新内容
+      // Not the current fragment, need to switch
       replaceFragment(getSupportFragmentManager(), id);
     } else {
       Utils.logh(TAG, " ignore --- selected !!! ");

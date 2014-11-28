@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <!-- 导航栏 -->
+    <!-- Navigation bar -->
 	<LinearLayout
 	    android:baselineAligned="false"
 	    android:id="@+id/main_navigate"
@@ -31,39 +31,39 @@
 	            style="@style/main_navi_img_style" />
 	    </RelativeLayout>
 	    <RelativeLayout
-	        android:id="@+id/navi_item_work_notes"
+	        android:id="@+id/navi_item_friends"
 	        android:layout_width="match_parent"
 	        android:layout_height="match_parent"
 	        android:layout_weight="1"
 	        android:clickable="true" >
 	        <TextView
-	            android:id="@+id/navi_item_work_notes_name"
-	            android:text="@string/str_navi_work_notes"
+	            android:id="@+id/navi_item_friends_name"
+	            android:text="@string/str_navi_friends"
 	            style="@style/main_navi_txt_style" />
 	        <ImageView
-	            android:layout_above="@id/navi_item_work_notes_name"
-	            android:src="@drawable/main_navi_icon_work_notes"
+	            android:layout_above="@id/navi_item_friends_name"
+	            android:src="@drawable/main_navi_icon_friends"
 	            android:contentDescription="@null"
 	            style="@style/main_navi_img_style" />
 	    </RelativeLayout>
 	    <RelativeLayout
-	        android:id="@+id/navi_item_third_libs"
+	        android:id="@+id/navi_item_trips"
 	        android:layout_width="match_parent"
 	        android:layout_height="match_parent"
 	        android:layout_weight="1"
 	        android:clickable="true" >
 	        <TextView
-	            android:id="@+id/navi_item_third_libs_name"
-	            android:text="@string/str_navi_third_libs"
+	            android:id="@+id/navi_item_trips_name"
+	            android:text="@string/str_navi_trips"
 	            style="@style/main_navi_txt_style" />
 	        <ImageView
-	            android:layout_above="@id/navi_item_third_libs_name"
-	            android:src="@drawable/main_navi_icon_third_libs"
+	            android:layout_above="@id/navi_item_trips_name"
+	            android:src="@drawable/main_navi_icon_trips"
 	            android:contentDescription="@null"
 	            style="@style/main_navi_img_style" />
 	    </RelativeLayout>
 	</LinearLayout>
-	<!-- 分割线 -->
+	<!-- split line -->
 	<View
 	    android:id="@+id/navigate_top_line"
 	    android:layout_above="@id/main_navigate"
@@ -71,7 +71,7 @@
 	    android:layout_height="1dip"
 	    android:background="#DADADA"/>
 	
-    <!-- 内容 -->
+    <!-- content -->
 	<FrameLayout
 	    android:id="@+id/content_frame"
 	    android:layout_above="@id/navigate_top_line"
