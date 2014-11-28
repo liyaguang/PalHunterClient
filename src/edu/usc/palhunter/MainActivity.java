@@ -1,73 +1,49 @@
 package edu.usc.palhunter;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.Signature;
-import android.location.Location;
-import android.location.LocationListener;
+import android.graphics.Color;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Base64;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.SparseArray;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
+import android.view.View.OnClickListener;
 
 import com.facebook.AppEventsLogger;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.jeremyfeinstein.slidingmenu.lib.anim.CustomAnimation;
+import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 
 import edu.usc.palhunter.data.LocalUserInfo;
-import edu.usc.palhunter.ui.navi.BottomNavigateActivity;
-import edu.usc.palhunter.ui.sidebar.SideBarActivity;
+import edu.usc.palhunter.ui.sidebar.FriendsFragment;
+import edu.usc.palhunter.ui.sidebar.HomeFragment;
+import edu.usc.palhunter.ui.sidebar.LeftMenuFragment;
+import edu.usc.palhunter.ui.sidebar.TripsFragment;
+import edu.usc.palhunter.util.Utils;
 
-public class MainActivity extends Activity {
+public class MainActivity extends SlidingFragmentActivity implements
+    OnClickListener {
 
-  public final static String EXTRA_MESSAGE = "com.example.androiddemo.MESSAGE";
   private static final String TAG = "MainActivity";
+  public static final String EXTRA_MESSAGE = MainActivity.class.getName();
+  private SparseArray<Fragment> navigateMap = new SparseArray<Fragment>();
 
   @Override
-  protected void onCreate(Bundle savedInstanceState) {
+  public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    // setContentView(R.layout.activity_main);
-    setContentView(R.layout.activity_main);
-    calcHash();
     init();
-  }
-
-  private void calcHash() {
-    PackageInfo info;
-    try {
-      info = getPackageManager().getPackageInfo("edu.usc.palhunter",
-          PackageManager.GET_SIGNATURES);
-      for (Signature signature : info.signatures) {
-        MessageDigest md = MessageDigest.getInstance("SHA");
-        md.update(signature.toByteArray());
-        Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
-      }
-    } catch (NameNotFoundException e) {
-      e.printStackTrace();
-    } catch (NoSuchAlgorithmException e) {
-      e.printStackTrace();
-    }
-
+    setContentViews();
   }
 
   private void init() {
-    SharedPreferences pref = getPreferences(MODE_PRIVATE);
-    String savedMessage = pref.getString(
-        getString(R.string.main_activity_saved_message), "");
-    // get editor
-    EditText editText = (EditText) findViewById(R.id.edit_message);
-    editText.setText(savedMessage);
     setUserId();
   }
 
@@ -76,41 +52,156 @@ public class MainActivity extends Activity {
     LocalUserInfo.setUserId(this, 1);
   }
 
-  @Override
-  protected void onPause() {
-    super.onPause();
+  private void setContentViews() {
+    FragmentManager fm = getSupportFragmentManager();
+    SlidingMenu sm = getSlidingMenu();
+    // 背景
+    sm.setBackgroundColor(Color.rgb(37, 37, 37));
+    // 阴影
+    sm.setShadowWidthRes(R.dimen.shadow_width);
+    sm.setShadowDrawable(R.drawable.slide_menu_shadow);
+    // 偏移
+    DisplayMetrics metrics = new DisplayMetrics();
+    getWindowManager().getDefaultDisplay().getMetrics(metrics);
+    if (metrics.widthPixels > 0) {
+      // 资源配置，在不同分辨率，总会有出现别扭的机型，
+      // 可以通过屏幕实际宽度，按比例配置偏移，比如：黄金比例
+      sm.setBehindOffset((int) (metrics.widthPixels * 0.382));
+    } else {
+      // 通过资源配置偏移
+      sm.setBehindOffsetRes(R.dimen.slidingmenu_offset);
+    }
+    // 设置侧滑栏动画
+    sm.setBehindCanvasTransformer((new CustomAnimation())
+        .getCustomZoomAnimation());
 
-    // Logs 'app deactivate' App Event
-    AppEventsLogger.deactivateApp(this);
-    Log.d(TAG, "App paused");
+    sm.setFadeDegree(0.35f);
+    sm.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+    sm.setMode(SlidingMenu.LEFT);
+
+    // 添加导航内容
+    setContentView(R.layout.slide_menu_content_frame);
+    navigateMap.clear();
+    mapNaviToFragment(R.id.navi_item_home, new HomeFragment()); // 首页
+    mapNaviToFragment(R.id.navi_item_work_notes, new FriendsFragment()); // 工作笔记
+    mapNaviToFragment(R.id.navi_item_third_libs, new TripsFragment()); // 第三方
+    // 设置首页默认显示
+    replaceFragment(fm, R.id.navi_item_home);
+
+    // 设置左侧滑栏内容
+    LeftMenuFragment lmf = new LeftMenuFragment();
+    setBehindContentView(R.layout.slide_menu_frame);
+    fm.beginTransaction().replace(R.id.menu_frame, lmf).commit();
+    Utils
+        .logh(TAG,
+            "replaceFragment EntryCount: "
+                + fm.getBackStackEntryCount()
+                + " size: "
+                + (null == fm.getFragments() ? "0[null]" : fm.getFragments()
+                    .size()));
+  }
+
+  /**
+   * 初始化map
+   * 
+   * @param id
+   *          导航view ID
+   * @param fragment
+   */
+  private void mapNaviToFragment(int id, Fragment fragment) {
+    View view = findViewById(id);
+    Utils.logh(TAG, "mapNaviToFragment " + id + " view: " + view);
+    view.setOnClickListener(this);
+    view.setSelected(false);
+    navigateMap.put(id, fragment);
+  }
+
+  /**
+   * 执行内容切换
+   * 
+   * @param fm
+   * @param id
+   *          导航view ID
+   */
+  private void replaceFragment(FragmentManager fm, int id) {
+    Utils
+        .logh(TAG,
+            "replaceFragment EntryCount: "
+                + fm.getBackStackEntryCount()
+                + " size: "
+                + (null == fm.getFragments() ? "0[null]" : fm.getFragments()
+                    .size()));
+    String tag = String.valueOf(id);
+    // 执行替换
+    FragmentTransaction trans = fm.beginTransaction();
+    if (null == fm.findFragmentByTag(tag)) {
+      trans.replace(R.id.content_frame, navigateMap.get(id), tag);
+      // 不存在时，添加到stack，避免切换时，先前的被清除{fm.getFragments()}
+      // {存在时，不添加，避免BackStackEntry不断累加}
+      Utils.logh(TAG, "null +++ add to back");
+      trans.addToBackStack(tag);
+    } else {
+      trans.replace(R.id.content_frame, fm.findFragmentByTag(tag), tag);
+    }
+    trans.commit();
+    Utils.logh(TAG, "replace map: " + navigateMap.get(id) + "\n"
+        + "---- fm tag: " + fm.findFragmentByTag(tag));
+    // 重置导航选中状态
+    for (int i = 0, size = navigateMap.size(); i < size; i++) {
+      int curId = navigateMap.keyAt(i);
+      Utils.logh(TAG, "curId: " + curId);
+      if (curId == id) {
+        findViewById(id).setSelected(true);
+      } else {
+        findViewById(curId).setSelected(false);
+      }
+    }
   }
 
   @Override
-  protected void onStop() {
-    super.onStop();
-    Log.d(TAG, "App stoped");
+  public void onClick(View v) {
+    // TODO Auto-generated method stub
+    if (clickSwitchContent(v)) {
+      return;
+    }
+  }
+
+  /**
+   * 点击后，切换内容
+   * 
+   * @param view
+   *          点击view
+   * @return 点击view，是否为导航view
+   */
+  private boolean clickSwitchContent(View view) {
+    int id = view.getId();
+    if (navigateMap.indexOfKey(id) < 0) {
+      // 点击非导航view
+      return false;
+    }
+    Utils.logh(TAG, "switchContent " + id + " select: " + view.isSelected()
+        + " view: " + view);
+    if (!view.isSelected()) {
+      // 当前非选中状态：需切换到新内容
+      replaceFragment(getSupportFragmentManager(), id);
+    } else {
+      Utils.logh(TAG, " ignore --- selected !!! ");
+    }
+    return true;
+
   }
 
   @Override
-  protected void onResume() {
-    super.onResume();
-
-    // Logs 'install' and 'app activate' App Events
-    AppEventsLogger.activateApp(this);
-    Log.d(TAG, "App resumed");
-  }
-
-  @Override
-  protected void onStart() {
-    super.onStart();
-    Log.d(TAG, "App Started");
-    boolean gpsEnabled = checkGPS();
-    Log.d(TAG, "GPS Enabled: " + gpsEnabled);
-  }
-
-  public void btnCommitClick(View view) {
-    getCurrentLocation();
-
+  public boolean onKeyDown(int keyCode, KeyEvent event) {
+    if (KeyEvent.KEYCODE_BACK == keyCode) {
+      // @see SlidingFragmentActivity
+      if (getSlidingMenu().isMenuShowing()) {
+        getSlidingMenu().showContent();
+        return true;
+      }
+      // return true;
+    }
+    return super.onKeyDown(keyCode, event);
   }
 
   private boolean checkGPS() {
@@ -119,37 +210,6 @@ public class MainActivity extends Activity {
     boolean gpsEnabled = locationManager
         .isProviderEnabled(LocationManager.GPS_PROVIDER);
     return gpsEnabled;
-  }
-
-  private void getCurrentLocation() {
-    LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0,
-        0, new LocationListener() {
-
-          @Override
-          public void onStatusChanged(String provider, int status, Bundle extras) {
-
-          }
-
-          @Override
-          public void onProviderEnabled(String provider) {
-
-          }
-
-          @Override
-          public void onProviderDisabled(String provider) {
-
-          }
-
-          @Override
-          public void onLocationChanged(Location location) {
-            EditText editText = (EditText) findViewById(R.id.edit_message);
-            String locText = String.format("Lat: %.6f, lng: %.6f",
-                location.getLatitude(), location.getLongitude());
-            Log.d(TAG, locText);
-            editText.setText(locText);
-          }
-        });
   }
 
   @Override
@@ -173,51 +233,35 @@ public class MainActivity extends Activity {
     return super.onOptionsItemSelected(item);
   }
 
-  /**
-   * Called when click the button
-   * 
-   * @param view
-   */
-  public void sendMessage(View view) {
-    Intent intent = new Intent(this, DisplayMessageActivity.class);
-    EditText editText = (EditText) findViewById(R.id.edit_message);
-    String message = editText.getText().toString();
-    // save message using shared preference
-    SharedPreferences pref = getPreferences(MODE_PRIVATE);
-    SharedPreferences.Editor editor = pref.edit();
-    editor.putString(getString(R.string.main_activity_saved_message), message);
-    editor.commit();
-    intent.putExtra(EXTRA_MESSAGE, message);
-    startActivity(intent);
+  @Override
+  protected void onPause() {
+    super.onPause();
+
+    // Logs 'app deactivate' App Event
+    AppEventsLogger.deactivateApp(this);
+    Log.d(TAG, "App paused");
   }
 
-  public void btnOpenMapClick(View view) {
-    Intent intent = new Intent(this, MapActivity.class);
-    startActivity(intent);
+  @Override
+  protected void onStop() {
+    super.onStop();
+    Log.d(TAG, "App stoped");
   }
 
-  public void btnLoginClick(View view) {
-    Intent intent = new Intent(this, FBLoginActivity.class);
-    startActivity(intent);
+  @Override
+  protected void onResume() {
+    super.onResume();
+    // Logs 'install' and 'app activate' App Events
+    AppEventsLogger.activateApp(this);
+    Log.d(TAG, "App resumed");
   }
 
-  public void btnShowUserInfoClick(View view) {
-    Intent intent = new Intent(this, UserInfoActivity.class);
-    startActivity(intent);
+  @Override
+  protected void onStart() {
+    super.onStart();
+    Log.d(TAG, "App Started");
+    boolean gpsEnabled = checkGPS();
+    Log.d(TAG, "GPS Enabled: " + gpsEnabled);
   }
 
-  public void btnGCMTestClick(View view) {
-    Intent intent = new Intent(this, GCMDemoActivity.class);
-    startActivity(intent);
-  }
-
-  public void btnBottomNavClick(View view) {
-    Intent intent = new Intent(this, BottomNavigateActivity.class);
-    startActivity(intent);
-  }
-
-  public void btnSideBarClick(View view) {
-    Intent intent = new Intent(this, SideBarActivity.class);
-    startActivity(intent);
-  }
 }

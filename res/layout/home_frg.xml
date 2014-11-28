@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/edit_message" />
 
-    <RelativeLayout
+    <LinearLayout
         style="?android:attr/buttonBarStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,21 +26,9 @@
             android:text="@string/button_send" />
 
         <Button
-            android:id="@+id/commit_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/send_button"
-            android:layout_toRightOf="@id/send_button"
-            android:background="?android:attr/selectableItemBackground"
-            android:onClick="btnCommitClick"
-            android:text="@string/commit" />
-
-        <Button
             android:id="@+id/btn_show_map_activity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/commit_button"
-            android:layout_toRightOf="@id/commit_button"
             android:background="?android:attr/selectableItemBackground"
             android:onClick="btnOpenMapClick"
             android:text="@string/open_map" />
@@ -49,12 +37,10 @@
             android:id="@+id/btn_show_user_info_activity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/btn_show_map_activity"
-            android:layout_toRightOf="@id/btn_show_map_activity"
             android:background="?android:attr/selectableItemBackground"
             android:onClick="btnShowUserInfoClick"
             android:text="@string/show_user_info" />
-    </RelativeLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -65,34 +51,19 @@
             android:id="@+id/login_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="btnLoginClick"
             android:text="@string/login_button" />
 
         <Button
             android:id="@+id/gmc_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="btnGCMTestClick"
             android:text="@string/gcm_test" />
 
         <Button
             android:id="@+id/bottom_nav_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="btnBottomNavClick"
             android:text="@string/bottom_nav_test" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-        <Button
-            android:id="@+id/sidebar_test_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="btnSideBarClick"
-            android:text="@string/side_bar_test" />
     </LinearLayout>
 
 </LinearLayout>
