@@ -354,7 +354,7 @@ public class UserInfoActivity extends Activity implements
         HttpPost httpPost = new HttpPost(addr);
         List<NameValuePair> param = new ArrayList<NameValuePair>();
         JSONObject data = new JSONObject();
-        data.put("lat",loc.getLatitude());
+        data.put("lat", loc.getLatitude());
         data.put("lng", loc.getLongitude());
         data.put("userId", 0);
         param.add(new BasicNameValuePair("info", data.toString()));
@@ -451,6 +451,7 @@ public class UserInfoActivity extends Activity implements
   public void updateLocationClick(View v) {
     UpdateUserLocationTask task = new UpdateUserLocationTask();
   }
+
   @Override
   public void onConnectionFailed(ConnectionResult connectionResult) {
     // TODO Auto-generated method stub

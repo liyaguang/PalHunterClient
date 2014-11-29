@@ -1,69 +1,120 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemes.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
 
-    <EditText
-        android:id="@+id/edit_message"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tvDuration"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/edit_message" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:text="00:00:00"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="40sp" />
 
-    <LinearLayout
-        style="?android:attr/buttonBarStyle"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tvDurationDesc"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:layout_below="@+id/tvDuration"
+        android:layout_centerHorizontal="true"
+        android:text="Duration"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
-        <Button
-            android:id="@+id/send_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="?android:attr/selectableItemBackground"
-            android:onClick="sendMessage"
-            android:text="@string/button_send" />
+    <TextView
+        android:id="@+id/tvSteps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tvCaloriesDesc"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="37dp"
+        android:text="0"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-        <Button
-            android:id="@+id/btn_show_map_activity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="?android:attr/selectableItemBackground"
-            android:onClick="btnOpenMapClick"
-            android:text="@string/open_map" />
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_toLeftOf="@+id/tvStepsDesc"
+        android:layout_toRightOf="@+id/tvDistanceDesc"
+        android:text="Start" />
 
-        <Button
-            android:id="@+id/btn_show_user_info_activity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="?android:attr/selectableItemBackground"
-            android:onClick="btnShowUserInfoClick"
-            android:text="@string/show_user_info" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/tvCalories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tvCaloriesDesc"
+        android:layout_centerHorizontal="true"
+        android:text="0"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/tvCaloriesDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvDistanceDesc"
+        android:layout_alignBottom="@+id/tvDistanceDesc"
+        android:layout_centerHorizontal="true"
+        android:text="Calories(Cal)"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/tvDistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/map_container"
+        android:layout_below="@+id/tvDurationDesc"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="10dp"
+        android:text="0.00"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvDistanceDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvDistance"
+        android:layout_below="@+id/tvDistance"
+        android:text="Distance"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <FrameLayout
+        android:id="@+id/map_container"
         android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/btnStart"
+        android:layout_below="@id/tvStepsDesc"
+        android:layout_centerVertical="true"
+        android:padding="5dp"
+        android:layout_marginLeft="0dp" >
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.MapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Small Text"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvStepsDesc"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:layout_alignBaseline="@+id/tvCaloriesDesc"
+        android:layout_alignBottom="@+id/tvCaloriesDesc"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="27dp"
+        android:text="Steps"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
-        <Button
-            android:id="@+id/login_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/login_button" />
-
-        <Button
-            android:id="@+id/gmc_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/gcm_test" />
-
-        <Button
-            android:id="@+id/bottom_nav_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/bottom_nav_test" />
-    </LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>

@@ -25,6 +25,7 @@ import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 import edu.usc.palhunter.data.LocalUserInfo;
 import edu.usc.palhunter.ui.sidebar.FriendsFragment;
 import edu.usc.palhunter.ui.sidebar.HomeFragment;
+import edu.usc.palhunter.ui.sidebar.TestFragment;
 import edu.usc.palhunter.ui.sidebar.LeftMenuFragment;
 import edu.usc.palhunter.ui.sidebar.TripsFragment;
 import edu.usc.palhunter.util.Utils;
@@ -75,7 +76,7 @@ public class MainActivity extends SlidingFragmentActivity implements
         .getCustomZoomAnimation());
 
     sm.setFadeDegree(0.35f);
-    sm.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+    sm.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
     sm.setMode(SlidingMenu.LEFT);
 
     // Add navigation content
@@ -83,7 +84,7 @@ public class MainActivity extends SlidingFragmentActivity implements
     navigateMap.clear();
     mapNaviToFragment(R.id.navi_item_home, new HomeFragment()); // Home
     mapNaviToFragment(R.id.navi_item_friends, new FriendsFragment()); // Friends
-    mapNaviToFragment(R.id.navi_item_trips, new TripsFragment()); // Trips
+    mapNaviToFragment(R.id.navi_item_trips, new TestFragment()); // Trips
     // Set the default view
     replaceFragment(fm, R.id.navi_item_home);
 
