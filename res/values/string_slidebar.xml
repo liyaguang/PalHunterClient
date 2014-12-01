@@ -22,8 +22,10 @@
     <string name="str_hompage">Home page</string>
     <string name="str_other_app">Other app</string>
     <string name="str_recmd">Recommend</string>
-    <string name="str_menu1">Menu1</string>
-    <string name="str_menu2">Menu2</string>
+    <string name="str_login">Login</string>
+    <string name="str_settings">Settings</string>
+    <string name="str_follow_us">Follow us</string>
+    <string name="str_contact_us">Contact us</string>
     <string name="str_mailto">Email</string>
 
     <!-- wps exit dialog -->

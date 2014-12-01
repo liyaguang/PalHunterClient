@@ -6,15 +6,18 @@ import java.util.Arrays;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.Request;
 import com.facebook.Request.GraphUserCallback;
@@ -32,6 +35,14 @@ public class FBLoginFragment extends Fragment {
   private static final String TAG = "MainFragement";
   private UiLifecycleHelper uiHelper;
   private TextView userInfoTextView = null;
+  private FragmentActivity context = null;
+
+  @Override
+  public void onAttach(Activity activity) {
+    // TODO Auto-generated method stub
+    super.onAttach(activity);
+    context = (FragmentActivity) activity;
+  }
 
   private Session.StatusCallback callback = new Session.StatusCallback() {
 
@@ -46,18 +57,22 @@ public class FBLoginFragment extends Fragment {
   private void onSessionStateChange(Session session, SessionState state,
       Exception exception) {
     if (state.isOpened()) {
-      userInfoTextView.setVisibility(View.VISIBLE);
-      // Request user information
-      Request.executeMeRequestAsync(session, new GraphUserCallback() {
-
-        @Override
-        public void onCompleted(GraphUser user, Response response) {
-          // TODO Auto-generated method stub
-          if (user != null) {
-            userInfoTextView.setText(buildUserInfoDisplay(user));
-          }
-        }
-      });
+      // userInfoTextView.setVisibility(View.VISIBLE);
+      // // Request user information
+      // Request.executeMeRequestAsync(session, new GraphUserCallback() {
+      //
+      // @Override
+      // public void onCompleted(GraphUser user, Response response) {
+      // // TODO Auto-generated method stub
+      // if (user != null) {
+      // userInfoTextView.setText(buildUserInfoDisplay(user));
+      // }
+      // }
+      // });
+      Toast.makeText(context, "Log in successfully!", Toast.LENGTH_SHORT)
+          .show();
+      Intent intent = new Intent(context, MainActivity.class);
+      startActivity(intent);
       Log.i(TAG, "Logged in...");
     } else if (state.isClosed()) {
       userInfoTextView.setVisibility(View.INVISIBLE);
@@ -76,12 +91,14 @@ public class FBLoginFragment extends Fragment {
   @Override
   public View onCreateView(LayoutInflater inflater,
       @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-    View view = inflater.inflate(R.layout.activity_facebook_login, container, false);
+    View view = inflater.inflate(R.layout.login_frg, container, false);
+    // View view = inflater.inflate(R.layout.activity_facebook_login, container,
+    // false);
     LoginButton authButton = (LoginButton) view.findViewById(R.id.authButton);
     authButton.setFragment(this);
-    authButton.setReadPermissions(Arrays.asList("public_profile",
-        "user_friends", "email", "user_likes", "user_status", "user_location",
-        "user_birthday"));
+    authButton.setReadPermissions(Arrays
+        .asList("public_profile", "user_friends", "email", "user_likes",
+            "user_location", "user_birthday"));
 
     userInfoTextView = (TextView) view.findViewById(R.id.userInfoTextView);
     return view;
@@ -168,4 +185,3 @@ public class FBLoginFragment extends Fragment {
   }
 
 }
-

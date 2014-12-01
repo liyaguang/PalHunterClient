@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SimpleAdapter;
 import edu.usc.palhunter.R;
+import edu.usc.palhunter.roadnetwork.IGeoPoint;
 
 public class FriendsFragment extends ListFragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -21,7 +22,8 @@ public class FriendsFragment extends ListFragment {
   private List<String> getFriends() {
     List<String> list = new ArrayList<String>();
     String[] friends = new String[] { "Yaguang", "Luan Tran", "Ding xiong",
-        "Cyrus" };
+        "Hien To", "Joseph" };
+    List<IGeoPoint> location = new ArrayList<IGeoPoint>();
     for (String friend : friends) {
       list.add(friend);
     }
@@ -37,12 +39,12 @@ public class FriendsFragment extends ListFragment {
     List<String> friends = getFriends();
     for (int i = 0; i < friends.size(); ++i) {
       HashMap<String, Object> item = new HashMap<String, Object>();
-      item.put("navi_lv_item_text", friends.get(i));
+      item.put("userName", friends.get(i));
       listItems.add(item);
     }
     SimpleAdapter adapter = new SimpleAdapter(getActivity(), listItems,
-        R.layout.navi_lv_item, new String[] { "navi_lv_item_text" },
-        new int[] { R.id.navi_lv_item_text });
+        R.layout.lv_friend_item, new String[] { "userName" },
+        new int[] { R.id.lv_tvUserNameItem });
 
     setListAdapter(adapter);
   }

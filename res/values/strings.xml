@@ -6,7 +6,7 @@
     <string name="edit_message">Enter a message</string>
     <string name="edit_content">Please input the conent</string>
     <string name="button_send">Send</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">Palhunter</string>
     <string name="title_activity_display_message">My Message</string>
     <string name="commit">Commit</string>
     <string name="tv_reminder">Reminder</string>
@@ -26,19 +26,29 @@
 
     <!-- Used for Key values -->
     <string name="main_activity_saved_message">main_activity_saved_message</string>
-    <string name="title_activity_user_info">UserInfoActivity</string>
+    <string name="title_activity_user_info">Your Information</string>
 
     <!-- Text for button -->
     <string name="show_user_info">Show Info</string>
     <string name="show_user_location">Show User Location</string>
     <string name="get_user_address">Get User Address</string>
     <string name="update_location">Update Location</string>
-    <string name="title_activity_facebook_login">FacebookLoginActivity</string>
+    <string name="title_activity_facebook_login">Log in</string>
     <string name="title_activity_gcmdemo">GCMDemoActivity</string>
     <string name="gcm_test">GCM Test</string>
     <string name="title_activity_bottom_navigate">BottomNavigateActivity</string>
     <string name="bottom_nav_test">Bottom Nav Test</string>
     <string name="side_bar_test">Sidebar Test</string>
     <string name="title_activity_sidebar">SlideBar</string>
+    <string name="start">START</string>
+    <string name="finish">FINISH</string>
+    <string name="calories_cal">Calories(KCal)</string>
+    <string name="distance">Distance(m)</string>
+    <string name="duration">Duration</string>
+    <string name="str_share_with_your_friends">Share with your friends?</string>
+    <string name="str_share_with_your_friends_msg">You are awesome! \n Share with your friends?</string>
+    <string name="login_or_register">Login or Register</string>
+    <string name="facebook">Facebook</string>
+    <string name="title_activity_share_trip">ShareTripActivity</string>
 
 </resources>

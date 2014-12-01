@@ -32,4 +32,7 @@
 	<color name="color_top_btn_start">#ff7a9da9</color>
 	<color name="color_top_btn_end">#ff566592</color>
 	<color name="color_top_btn_stroke">#ff506088</color>
+
+	<color name="color_start_btn_bg">#ff7ece2f</color>
+	<color name="color_start_btn_text">#ffffffff</color>
 </resources>

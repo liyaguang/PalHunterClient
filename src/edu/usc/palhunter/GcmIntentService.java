@@ -49,14 +49,14 @@ public class GcmIntentService extends IntentService {
           Log.i(TAG,
               "Working... " + (i + 1) + "/5 @ " + SystemClock.elapsedRealtime());
           try {
-            Thread.sleep(1000);
+            Thread.sleep(100);
           } catch (InterruptedException e) {
           }
         }
         Log.i(TAG, "Completed work @ " + SystemClock.elapsedRealtime());
         // Post notification of received message.
         String content = extras.getString("content");
-        sendNotification("Received: " + content);
+        sendNotification(content);
         Log.i(TAG, "Received: " + extras.toString());
       }
     }
@@ -74,21 +74,21 @@ public class GcmIntentService extends IntentService {
 
     Intent resultIntent = new Intent(this, GCMDemoActivity.class);
     resultIntent.putExtra("message", msg);
-    resultIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
-        Intent.FLAG_ACTIVITY_SINGLE_TOP);
+    resultIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+        | Intent.FLAG_ACTIVITY_SINGLE_TOP);
     PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
         resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
     NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
-        .setSmallIcon(R.drawable.ic_stat_gcm)
-        .setContentTitle("Palhunter Message")
+        .setSmallIcon(R.drawable.ic_gcm2).setContentTitle("Palhunter Notification")
         .setStyle(new NotificationCompat.BigTextStyle().bigText(msg))
         .setContentText(msg);
 
     mBuilder.setContentIntent(contentIntent);
 
     Notification notification = mBuilder.build();
-    notification.flags |= Notification.FLAG_AUTO_CANCEL;
+    notification.flags |= Notification.FLAG_AUTO_CANCEL
+        | Notification.FLAG_SHOW_LIGHTS;
     mNotificationManager.notify(NOTIFICATION_ID, notification);
   }
 

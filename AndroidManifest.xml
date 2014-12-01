@@ -43,8 +43,10 @@
 
     <application
         android:allowBackup="true"
+        android:configChanges="keyboardHidden|orientation|screenSize"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
+        android:screenOrientation="portrait"
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
@@ -130,7 +132,7 @@
                 android:value="edu.usc.palhunter.MainActivity" />
         </activity>
         <activity
-            android:name="edu.usc.palhunter.ui.navi.BottomNavigateActivity"
+            android:name=".ui.navi.BottomNavigateActivity"
             android:label="@string/title_activity_bottom_navigate"
             android:parentActivityName=".MainActivity" >
             <meta-data
@@ -138,12 +140,16 @@
                 android:value="edu.usc.palhunter.MainActivity" />
         </activity>
         <activity
-            android:name="edu.usc.palhunter.ui.sidebar.SideBarActivity"
+            android:name=".ui.sidebar.SideBarActivity"
             android:label="@string/title_activity_sidebar"
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="edu.usc.palhunter.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ShareTripActivity"
+            android:label="@string/title_activity_share_trip" >
         </activity>
     </application>
 

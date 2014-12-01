@@ -1,4 +1,4 @@
-package edu.usc.palhunter.data;
+package edu.usc.palhunter.db;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -14,6 +14,7 @@ public class LocalUserInfo {
 
   public static final String PREF_NAME = "USER_INFO_PREF";
   public static final String PROPERTY_USER_ID = "USER_ID";
+  public static final String PROPERTY_USER_NAME = "USER_NAME";
 
   private static SharedPreferences getPref(Context context) {
     return context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
@@ -26,6 +27,16 @@ public class LocalUserInfo {
   public static void setUserId(Context context, int userId) {
     Editor editor = getPref(context).edit();
     editor.putInt(PROPERTY_USER_ID, userId);
+    editor.commit();
+  }
+
+  public static String getUserName(Context context) {
+    return getPref(context).getString(PROPERTY_USER_NAME, "User");
+  }
+
+  public static void setUserName(Context context, String userName) {
+    Editor editor = getPref(context).edit();
+    editor.putString(PROPERTY_USER_NAME, userName);
     editor.commit();
   }
 }

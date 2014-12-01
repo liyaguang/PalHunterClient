@@ -23,7 +23,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
-import edu.usc.palhunter.data.LocalUserInfo;
+import edu.usc.palhunter.db.LocalUserInfo;
 import edu.usc.palhunter.util.APIRequest;
 
 public class GCMDemoActivity extends Activity {

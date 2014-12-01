@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/ivTripIcon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:contentDescription="Trip"
+        android:src="@drawable/trip" />
+
+    <TextView
+        android:id="@+id/tvDistanceItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ivTripIcon"
+        android:layout_toRightOf="@+id/ivTripIcon"
+        android:layout_marginLeft="25dp"
+        android:text="560m"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/tvDurationItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="70dp"
+        android:layout_toRightOf="@+id/ivTripIcon"
+        android:text="00:00:00"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="35sp" />
+
+    <TextView
+        android:id="@+id/tvStepsItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvCalorieItem"
+        android:layout_alignBottom="@+id/tvCalorieItem"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="25dp"
+        android:text="500"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/tvCalorieItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvDistanceItem"
+        android:layout_alignBottom="@+id/tvDistanceItem"
+        android:layout_alignRight="@+id/tvDurationItem"
+        android:layout_marginRight="25dp"
+        android:text="300KCal"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+</RelativeLayout>

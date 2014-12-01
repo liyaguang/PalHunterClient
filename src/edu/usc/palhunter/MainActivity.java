@@ -1,6 +1,8 @@
 package edu.usc.palhunter;
 
 import android.content.Context;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -22,11 +24,11 @@ import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.anim.CustomAnimation;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 
-import edu.usc.palhunter.data.LocalUserInfo;
+import edu.usc.palhunter.db.LocalUserInfo;
 import edu.usc.palhunter.ui.sidebar.FriendsFragment;
 import edu.usc.palhunter.ui.sidebar.HomeFragment;
-import edu.usc.palhunter.ui.sidebar.TestFragment;
 import edu.usc.palhunter.ui.sidebar.LeftMenuFragment;
+import edu.usc.palhunter.ui.sidebar.TestFragment;
 import edu.usc.palhunter.ui.sidebar.TripsFragment;
 import edu.usc.palhunter.util.Utils;
 
@@ -45,6 +47,8 @@ public class MainActivity extends SlidingFragmentActivity implements
   }
 
   private void init() {
+    // lock orientation
+    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     setUserId();
   }
 
@@ -84,7 +88,8 @@ public class MainActivity extends SlidingFragmentActivity implements
     navigateMap.clear();
     mapNaviToFragment(R.id.navi_item_home, new HomeFragment()); // Home
     mapNaviToFragment(R.id.navi_item_friends, new FriendsFragment()); // Friends
-    mapNaviToFragment(R.id.navi_item_trips, new TestFragment()); // Trips
+    // mapNaviToFragment(R.id.navi_item_trips, new TestFragment()); // Trips
+    mapNaviToFragment(R.id.navi_item_trips, new TripsFragment()); // Trips
     // Set the default view
     replaceFragment(fm, R.id.navi_item_home);
 
@@ -139,7 +144,7 @@ public class MainActivity extends SlidingFragmentActivity implements
       // if not exist, add to stack{fm.getFragments()}
       // if exist, do not add to avoid BackStackEntry increase
       Utils.logh(TAG, "null +++ add to back");
-      trans.addToBackStack(tag);
+      // trans.addToBackStack(tag);
     } else {
       trans.replace(R.id.content_frame, fm.findFragmentByTag(tag), tag);
     }
@@ -231,11 +236,16 @@ public class MainActivity extends SlidingFragmentActivity implements
     }
     return super.onOptionsItemSelected(item);
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration newConfig) {
+    // TODO Auto-generated method stub
+    super.onConfigurationChanged(newConfig);
+  }
 
   @Override
   protected void onPause() {
     super.onPause();
-
     // Logs 'app deactivate' App Event
     AppEventsLogger.deactivateApp(this);
     Log.d(TAG, "App paused");

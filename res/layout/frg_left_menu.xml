@@ -12,7 +12,7 @@
         android:baselineAligned="false"
         android:orientation="horizontal" >
 	    <RelativeLayout
-	        android:id="@+id/left_menu_get_source"
+	        android:id="@+id/menuContactUs"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:layout_weight="1"
@@ -22,7 +22,7 @@
 	            style="@style/left_menu_oper_item_txt"
 	            android:layout_centerInParent="true"
 	            android:drawableLeft="@drawable/main_navi_def_normal"
-	            android:text="@string/str_menu1" />		        
+	            android:text="@string/str_contact_us" />		        
 	    </RelativeLayout>
 	    <View
 	        android:layout_width="1px"
@@ -41,7 +41,7 @@
 	            style="@style/left_menu_oper_item_txt"
 	            android:layout_centerInParent="true"
 	            android:drawableLeft="@drawable/main_navi_def_normal"
-	            android:text="@string/str_menu2" />		        
+	            android:text="@string/str_settings" />		        
 	    </RelativeLayout>
     </LinearLayout>
     <!-- User Info -->
@@ -93,7 +93,7 @@
 	            android:background="#34393d" />
             <!-- Relative layout for extension-->
 		    <RelativeLayout
-		        android:id="@+id/left_menu_register"
+		        android:id="@+id/left_menu_login"
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
 		        android:clickable="true"
@@ -101,11 +101,11 @@
 		        <TextView
 		            style="@style/left_menu_item_txt"
 		            android:drawableLeft="@drawable/main_navi_def_normal"
-		            android:text="@string/str_menu1" />		        
+		            android:text="@string/str_login" />		        
 		    </RelativeLayout>
             
 		    <RelativeLayout
-		        android:id="@+id/left_menu_mailto"
+		        android:id="@+id/left_menu_settings"
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
 		        android:clickable="true"
@@ -113,7 +113,7 @@
 		        <TextView
 		            style="@style/left_menu_item_txt"
 		            android:drawableLeft="@drawable/main_navi_def_normal"
-		            android:text="@string/str_menu2" />		        
+		            android:text="@string/str_settings" />		        
 		    </RelativeLayout>
 		    
 	        <View
