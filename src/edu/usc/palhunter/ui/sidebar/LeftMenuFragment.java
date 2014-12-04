@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import edu.usc.palhunter.FBLoginActivity;
+import edu.usc.palhunter.GCMDemoActivity;
 import edu.usc.palhunter.R;
 
 public class LeftMenuFragment extends Fragment implements OnClickListener {
@@ -34,6 +35,7 @@ public class LeftMenuFragment extends Fragment implements OnClickListener {
     view.findViewById(R.id.left_menu_recommend).setOnClickListener(this);
     view.findViewById(R.id.left_menu_login).setOnClickListener(this);
     view.findViewById(R.id.left_menu_settings).setOnClickListener(this);
+    view.findViewById(R.id.left_menu_messages).setOnClickListener(this);
   }
 
   @Override
@@ -60,6 +62,9 @@ public class LeftMenuFragment extends Fragment implements OnClickListener {
           .getString(R.string.str_auth_mail) });
       startActivity(Intent.createChooser(emailIntent, null));
       break;
+    case R.id.left_menu_messages:
+      intent = new Intent(context, GCMDemoActivity.class);
+      startActivity(intent);
     }
   }
 

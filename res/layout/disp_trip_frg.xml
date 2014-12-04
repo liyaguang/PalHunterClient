@@ -2,33 +2,44 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
+    <ImageView
+        android:id="@+id/ivDistance"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tvDuration"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="18dp"
+        android:src="@drawable/distance_icon" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/duration_icon" />
+
     <TextView
         android:id="@+id/tvDuration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignTop="@+id/imageView1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
         android:text="00:00:00"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="40sp" />
 
     <TextView
-        android:id="@+id/tvDurationDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvDuration"
-        android:layout_centerHorizontal="true"
-        android:text="@string/duration"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
         android:id="@+id/tvSteps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/tvCaloriesDesc"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="37dp"
+        android:layout_alignBaseline="@+id/tvDistance"
+        android:layout_alignBottom="@+id/tvDistance"
+        android:layout_alignLeft="@+id/ivSteps"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/ivSteps"
         android:text="0"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -36,73 +47,49 @@
         android:id="@+id/tvCalories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/tvCaloriesDesc"
-        android:layout_centerHorizontal="true"
+        android:layout_alignBaseline="@+id/tvSteps"
+        android:layout_alignBottom="@+id/tvSteps"
+        android:layout_alignLeft="@+id/ivCalorie"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
         android:text="0.00"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TextView
-        android:id="@+id/tvCaloriesDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tvDistanceDesc"
-        android:layout_alignBottom="@+id/tvDistanceDesc"
-        android:layout_centerHorizontal="true"
-        android:text="@string/calories_cal"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+    <ImageView
+        android:id="@+id/ivCalorie"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/ivSteps"
+        android:layout_marginLeft="80dp"
+        android:layout_toRightOf="@+id/tvSteps"
+        android:src="@drawable/calorie_icon" />
+
+    <ImageView
+        android:id="@+id/tvTripImage"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="72dp"
+        android:src="@drawable/view_trip" />
 
     <TextView
         android:id="@+id/tvDistance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/map_container"
-        android:layout_below="@+id/tvDurationDesc"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_alignLeft="@+id/ivDistance"
+        android:layout_below="@+id/ivSteps"
+        android:layout_marginLeft="9dp"
         android:text="0"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <FrameLayout
-        android:id="@+id/map_container"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@+id/tvStepsDesc"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="0dp"
-        android:padding="5dp" >
-
-        <!-- <fragment -->
-        <!-- android:id="@+id/map" -->
-        <!-- android:name="com.google.android.gms.maps.MapFragment" -->
-        <!-- android:layout_width="match_parent" -->
-        <!-- android:layout_height="match_parent" /> -->
-
-        <com.google.android.gms.maps.MapView
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/mapView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </FrameLayout>
-
-    <TextView
-        android:id="@id/tvStepsDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tvCaloriesDesc"
-        android:layout_alignBottom="@+id/tvCaloriesDesc"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="27dp"
-        android:text="Steps"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/tvDistanceDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvDistance"
-        android:layout_marginRight="10dp"
-        android:layout_toLeftOf="@+id/tvDuration"
-        android:text="@string/distance"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+    <ImageView
+        android:id="@+id/ivSteps"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/tvDuration"
+        android:layout_alignTop="@+id/ivDistance"
+        android:layout_marginLeft="36dp"
+        android:src="@drawable/steps_icon" />
 
 </RelativeLayout>

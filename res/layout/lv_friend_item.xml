@@ -24,11 +24,11 @@
         android:layout_marginLeft="35dp"
         android:layout_toRightOf="@+id/lv_rivUserAvatar"
         android:text="User Name"
-        android:textSize="30sp"
+        android:textSize="26sp"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/lv_tvFriendDistance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/lv_rivUserAvatar"
@@ -40,9 +40,9 @@
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView1"
+        android:layout_alignTop="@+id/lv_tvFriendDistance"
         android:layout_marginLeft="8dp"
-        android:layout_toRightOf="@+id/textView1"
+        android:layout_toRightOf="@+id/lv_tvFriendDistance"
         android:src="@drawable/marker" />
 
 </RelativeLayout>

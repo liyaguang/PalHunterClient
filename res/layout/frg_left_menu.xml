@@ -115,7 +115,17 @@
 		            android:drawableLeft="@drawable/main_navi_def_normal"
 		            android:text="@string/str_settings" />		        
 		    </RelativeLayout>
-		    
+		    <RelativeLayout
+		        android:id="@+id/left_menu_messages"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:clickable="true"
+		        android:background="@drawable/left_menu_item_bkg" >
+		        <TextView
+		            style="@style/left_menu_item_txt"
+		            android:drawableLeft="@drawable/main_navi_def_normal"
+		            android:text="@string/str_messages" />		        
+		    </RelativeLayout> 
 	        <View
 	            android:layout_width="match_parent"
 	            android:layout_height="1px"

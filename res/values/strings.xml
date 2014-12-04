@@ -21,7 +21,7 @@
     <!-- Action bar menu -->
     <string name="action_search">Search</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_map">My Trajectory</string>
+    <string name="title_activity_map">Location</string>
     <string name="title_activity_login">Log in</string>
 
     <!-- Used for Key values -->
@@ -50,5 +50,6 @@
     <string name="login_or_register">Login or Register</string>
     <string name="facebook">Facebook</string>
     <string name="title_activity_share_trip">ShareTripActivity</string>
+    <string name="title_activity_view_trip">My Trips</string>
 
 </resources>

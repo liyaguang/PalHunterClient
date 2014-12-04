@@ -9,15 +9,22 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 import edu.usc.palhunter.R;
+import edu.usc.palhunter.ViewTripActivity;
 import edu.usc.palhunter.db.LocalUserInfo;
 import edu.usc.palhunter.db.Trip;
 import edu.usc.palhunter.util.APIRequest;
@@ -34,6 +41,16 @@ public class TripsFragment extends ListFragment {
     // return super.onCreateView(inflater, container, savedInstanceState);
     View v = inflater.inflate(R.layout.navi_lv_frg, container, false);
     return v;
+  }
+
+  @Override
+  public void onListItemClick(ListView l, View v, int position, long id) {
+    // TODO Auto-generated method stub
+    super.onListItemClick(l, v, position, id);
+    // Toast.makeText(context, "" + position, Toast.LENGTH_SHORT).show();
+    Intent intent = new Intent(context, ViewTripActivity.class);
+    intent.putExtra("tripId", trips.get(position).getId());
+    startActivity(intent);
   }
 
   private void getTrips() {
@@ -102,9 +119,9 @@ public class TripsFragment extends ListFragment {
       listItems.add(item);
     }
     SimpleAdapter adapter = new SimpleAdapter(getActivity(), listItems,
-        R.layout.lv_trip_item, new String[] { "duration", "distance", "calorie",
-            "steps" }, new int[] { R.id.tvDurationItem, R.id.tvDistanceItem,
-            R.id.tvCalorieItem, R.id.tvStepsItem });
+        R.layout.lv_trip_item, new String[] { "duration", "distance",
+            "calorie", "steps" }, new int[] { R.id.tvDurationItem,
+            R.id.tvDistanceItem, R.id.tvCalorieItem, R.id.tvStepsItem });
     setListAdapter(adapter);
   }
 

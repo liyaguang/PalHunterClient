@@ -243,7 +243,7 @@ public class HomeFragment extends Fragment implements
 
           CameraUpdate center = CameraUpdateFactory.newLatLng(new LatLng(
               location.getLatitude(), location.getLongitude()));
-          CameraUpdate zoom = CameraUpdateFactory.zoomTo(15);
+          CameraUpdate zoom = CameraUpdateFactory.zoomTo(18);
           mMap.moveCamera(center);
           mMap.animateCamera(zoom);
           mMap.setOnMyLocationChangeListener(null);

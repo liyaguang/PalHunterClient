@@ -72,18 +72,23 @@ public class GcmIntentService extends IntentService {
     mNotificationManager = (NotificationManager) this
         .getSystemService(Context.NOTIFICATION_SERVICE);
 
-    Intent resultIntent = new Intent(this, GCMDemoActivity.class);
+    Intent resultIntent = new Intent(this, MapActivity.class);
+    // Intent resultIntent = new Intent(this, GCMDemoActivity.class);
     resultIntent.putExtra("message", msg);
+    resultIntent.putExtra("nick", "Luan");
+    resultIntent.putExtra("lat", 34.0274995);
+    resultIntent.putExtra("lng", -118.291182);
     resultIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
         | Intent.FLAG_ACTIVITY_SINGLE_TOP);
     PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
         resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
     NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
-        .setSmallIcon(R.drawable.ic_gcm2).setContentTitle("Palhunter Notification")
+        .setSmallIcon(R.drawable.ic_gcm2)
+        .setContentTitle("Palhunter Notification")
         .setStyle(new NotificationCompat.BigTextStyle().bigText(msg))
         .setContentText(msg);
-
+    mBuilder.setPriority(Notification.PRIORITY_HIGH);
     mBuilder.setContentIntent(contentIntent);
 
     Notification notification = mBuilder.build();
@@ -91,5 +96,4 @@ public class GcmIntentService extends IntentService {
         | Notification.FLAG_SHOW_LIGHTS;
     mNotificationManager.notify(NOTIFICATION_ID, notification);
   }
-
 }

@@ -71,8 +71,13 @@ public class FBLoginFragment extends Fragment {
       // });
       Toast.makeText(context, "Log in successfully!", Toast.LENGTH_SHORT)
           .show();
-      Intent intent = new Intent(context, MainActivity.class);
-      startActivity(intent);
+      new android.os.Handler().postDelayed(new Runnable() {
+        public void run() {
+          Intent intent = new Intent(context, MainActivity.class);
+          startActivity(intent);
+        }
+      }, 2000);
+
       Log.i(TAG, "Logged in...");
     } else if (state.isClosed()) {
       userInfoTextView.setVisibility(View.INVISIBLE);
